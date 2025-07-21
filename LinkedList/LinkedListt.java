@@ -54,22 +54,45 @@ public class LinkedListt {
     public void deleteFirst(){
         head = head.next;
     }
+    public void insertAt(int data, int index){
+        Node newNode = new Node(data);
+        Node moverNode = head;
+        for(int i = 0; i < index ; i++){
+            moverNode = moverNode.next;   
+        }
+        Node temp = moverNode.next;
+        moverNode.next = newNode;
+        newNode.next = temp;
+    }
+    public int size(){
+        Node movNode = head;
+        int s = 0;
+        while(movNode.next != null){
+            s++;
+            movNode = movNode.next;
+        }
+        return s;
+    }
 
     public static void main(String[] args) {
         LinkedListt ll = new LinkedListt();
         ll.insert(1);
         ll.insert(2);
         ll.insert(3);
+        ll.insert(4);
+        ll.insert(5);
+        ll.insert(6);
         ll.printList();
 
         int a = ll.remove();
         System.out.println(a + "is removed");
         ll.printList();
-                ll.insert(3);
-        ll.printList();
-
+        //         ll.insert(3);
+        
         ll.deleteFirst();
-                ll.printList();
+        ll.printList();
+        ll.insertAt(9,2);
+        ll.printList();System.out.println(ll.size());
 
     }
 
