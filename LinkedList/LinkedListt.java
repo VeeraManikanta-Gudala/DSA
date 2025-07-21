@@ -14,51 +14,63 @@ class Node{
 }
 public class LinkedListt {
     public static Node head;
-    public static void insert(int data){
+    public  void insert(int data){
         Node newnNode = new Node(data);
-        Node moverNode = head;
 
         System.out.println(newnNode.data);
         if(head == null){
-            moverNode = newnNode;
-            // moverNode.next = null;
-            head = moverNode;
+            head = newnNode;
             return;
         }
         else{
-            // Node moverNode = head;
+            Node moverNode = head;
+
             while (moverNode.next != null) {
                 moverNode = moverNode.next;
             }
-            moverNode = newnNode;
-            // newnNode.next = null;
-            // head = moverNode;
+            moverNode.next = newnNode;
+            
         }
 
     }
-    public static void printList(){
+    public void printList(){
         Node moverNode = head;
         while(moverNode.next != null){
-            System.out.print(moverNode.data + "->");
+            System.out.print(moverNode.data);
+            System.out.print("-->");
             moverNode = moverNode.next;
         }
-        System.out.print("null");
+        System.out.print("null\n");
+    }
+    public int remove(){
+        Node moverNode = head;
+        while(moverNode.next != null){
+            moverNode = moverNode.next;
+        }
+        int a = moverNode.data;
+        moverNode= null;
+        return a;
+    }
+    public void deleteFirst(){
+        head = head.next;
     }
 
     public static void main(String[] args) {
-        // Node node = new Node(4);
-        // System.out.println(node.data);
-        // LinkedListt ll = new LinkedListt();
+        LinkedListt ll = new LinkedListt();
+        ll.insert(1);
+        ll.insert(2);
+        ll.insert(3);
+        ll.printList();
 
-        LinkedListt.insert(1);
+        int a = ll.remove();
+        System.out.println(a + "is removed");
+        ll.printList();
+                ll.insert(3);
+        ll.printList();
 
-                LinkedListt.insert(2);
+        ll.deleteFirst();
+                ll.printList();
 
-                        LinkedListt.insert(3);
-
-       LinkedListt.printList();
-        
-        
     }
 
 }
