@@ -8,8 +8,13 @@ public class Sortings {
         for (int num : arr) {
             System.out.print(num + " ");
         }
-        
-        
+        // Selection sort
+        int[] arr2 = {3, 6, 8, 10, 1, 2, 1};
+        selectionSort(arr2);
+        System.out.println("\nSorted array using Selection Sort: ");
+        for (int num : arr2) {
+            System.out.print(num + " ");
+        }
     }
 
     public static void bubbleSort(int[] arr) {
@@ -29,6 +34,21 @@ public class Sortings {
             if (!swapped) break; // If no two elements were swapped by inner loop, then break
         }
     }
-
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            // Find the minimum element in unsorted array
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Swap the found minimum element with the first element
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
     
 }
