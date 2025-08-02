@@ -23,5 +23,33 @@ public class Probs {
         int[] s2 = {4,2,1,2,1,3};
         
         System.out.println("Content children: " + findContentChildren(g2, s2)); 
+
+        // lemonade change problem
+        int[] bills = {5, 5, 10, 20};
+        System.out.println("Can give change: " + lemonadeChange(bills)); // Output: true
+        int[] bills2 = {5, 5, 10, 10, 20};
+        System.out.println("Can give change: " + lemonadeChange(bills2)); // Output: false
     }   
+    public static boolean lemonadeChange(int[] bills) {
+        int five = 0, ten = 0;
+        for (int bill : bills) {
+            if (bill == 5) {
+                five++;
+            } else if (bill == 10) {
+                if (five == 0) return false;
+                five--;
+                ten++;
+            } else { // bill == 20
+                if (ten > 0 && five > 0) {
+                    ten--;
+                    five--;
+                } else if (five >= 3) {
+                    five -= 3;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
