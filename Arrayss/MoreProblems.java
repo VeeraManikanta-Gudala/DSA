@@ -25,6 +25,23 @@ public class MoreProblems {
         for (int num : arr) {
             System.out.print(num + " ");
         }
+
+        // union of two sorted arrays
+        System.out.println("\n\nUnion of two sorted arrays:");
+        int[] arr1 = {1, 2, 4, 5, 6};
+        int[] arr2 = {2, 3, 5, 7, 8};
+        int[] union = new int[arr1.length + arr2.length];
+        int i = 0, j = 0, k1 = 0;   
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                union[k1++] = arr1[i++];
+            } else if (arr1[i] > arr2[j]) {
+                union[k1++] = arr2[j++];
+            } else {
+                union[k1++] = arr1[i++];
+                j++;
+            }
+        }
     }
 
     // Helper method to reverse a portion of the array
